@@ -13,6 +13,8 @@ export class ByCapitalPageComponent {
 
     public countries: Country[] = [];
 
+    public isLoading: boolean = false;
+
     constructor(private countriesService: CountriesService) {
 
     }
@@ -20,9 +22,12 @@ export class ByCapitalPageComponent {
 
     searchByCapital(term: string) {
 
+        this.isLoading = true;
+
         this.countriesService.SearchCapital(term)
             .subscribe(countries => {
                 this.countries = countries;
+                this.isLoading = false;
         });
 
     }

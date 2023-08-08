@@ -23,6 +23,7 @@ const routes: Routes = [
         loadChildren: () => import('./countries/countries.module').then(m => m.CountriesModule),
     },
     {
+        // cualquier cosa por defecto redirecciona a la ruta countries
         path: '**',
         redirectTo: 'countries'
     }
@@ -30,9 +31,11 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
+        // importamos el entutador principal de nuestra app, en el raiz.
         RouterModule.forRoot(routes),
     ],
     exports: [
+        // exportamos el router module para que lo vea el app modulo
         RouterModule,
     ]
 })
